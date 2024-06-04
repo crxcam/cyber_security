@@ -1,16 +1,14 @@
-import sys
-import fcntl
-import socket
-import struct
 
+import socket
 
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 bufer_size_reserved = 1024
+conn = None
+addr = None
 
-def create_socket_server_af_inet(ip, port):
-    print("create_socket_server_af_inet ip:", ip, "port:", port)
-    bufer_size_reserved = 1024
-    s.bind((ip, port))  # bind server
+def create_socket_server_af_inet(socket_server_ip,socket_server_port):
+    print("create_socket_server_af_inet ip:", socket_server_ip, "port:", socket_server_port)
+    s.bind((socket_server_ip, socket_server_port))  # bind server
     s.listen(5)
     monitoring_received_message()
 
@@ -21,16 +19,9 @@ def monitoring_received_message():
         conn, addr = s.accept()
         client_ip = addr[0]
         client_port = addr[1]
-        client_message_content = conn.recv(bufer_size_reserved)
-        print("new client connexion uncomming ip:",
-            client_ip, "port:", client_port)
-        print("message client content  :",
-            client_message_content)
-
-def send_message_to_client(ip,port):
-    conn, addr = s.accept()
-
-create_socket_server_af_inet(socket.gethostname(),4444)
-
-
+        message = conn.recv(bufer_size_reserved)
+        print("new message from client:",message)
+        
+def send_message_to_client(msg_to_client):
+    conn.send(msg_to_client.encode('utf-8'))
 
