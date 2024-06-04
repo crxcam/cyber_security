@@ -11,16 +11,7 @@ def get_all_ifaces_with_ip():
         dicti.update({ifaceName: addresses})
     return dicti
 
-
-def get_ip_from_virtual_network(input_ifacename):
-    for ifaceName in interfaces():
-        addresses = [i['addr'] for i in ifaddresses(
-            ifaceName).setdefault(AF_INET, [{'addr': 'No IP addr'}])]
-        if input_ifacename == ifaceName:
-            return addresses
-
-
-def socket_connexion(host, port):
+def check_socket_connexion(host, port):
     result = True
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     try:
@@ -40,7 +31,7 @@ def discovery_network(local_ip_address, port, ip_start_index, ip_end_index, file
           "end ip to scan:", prefix_ip + str(ip_end_index))
     while cpt < ip_end_index:
         ip_to_get = prefix_ip + str(cpt)
-        ip_is_active = socket_connexion(ip_to_get, port)
+        ip_is_active = check_socket_connexion(ip_to_get, port)
         print("Check if ip:", ip_to_get, " is active and port",
               port, "is open :", ip_is_active)
         cpt = cpt + 1

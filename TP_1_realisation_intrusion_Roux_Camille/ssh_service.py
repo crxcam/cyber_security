@@ -36,3 +36,13 @@ def run_ssh_login_attempts(ip_file_name, login_pswd_file_name, file_name_ssh_cxn
                     '\n', "")+":"+splited[0]+":"+splited[1].replace('\n', "")])
                 ssh_cxn_found = ssh_cxn_found+1
     return ssh_cxn_found
+
+
+def send_ethernet_packet():
+    s = socket.socket(socket.PF_PACKET, socket.SOCK_RAW, socket.ntohs(0x0800))
+    s.bind(("eth01", socket.htons(0x0800)))
+    source_mac=""
+    destination_mac=""
+    code ="\x08\x00"
+    eth = destination_mac+source_mac+code
+    s.send(eth)
