@@ -22,14 +22,15 @@ def monitoring_received_message():
         client_ip = addr[0]
         client_port = addr[1]
         client_message_content = conn.recv(bufer_size_reserved)
-        print("socket_server_af_inet : new client connexion uncomming ip:",
+        print("new client connexion uncomming ip:",
             client_ip, "port:", client_port)
-        print("socket_server_af_inet : message client content  :",
+        print("message client content  :",
             client_message_content)
 
 def send_message_to_client(ip,port):
     conn, addr = s.accept()
 
+create_socket_server_af_inet(socket.gethostname(),4444)
 
 
 
