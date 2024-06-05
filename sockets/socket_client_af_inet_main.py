@@ -14,6 +14,8 @@ def monitoring_received_message(socket):
     print("monitoring_received_message from server... ")
     while (True):
         message = socket.recv(bufer_size_reserved).decode('utf-8')
-        socket_tools.handle_message("client",message,socket)
+        print('RECEPTION MESSAGE DE SERVER ',message)
+        if len(message) > 2:
+            socket_tools.handle_message("client",message,socket)
 
 get_socket_client_af_inet()

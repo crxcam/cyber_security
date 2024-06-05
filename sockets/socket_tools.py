@@ -23,12 +23,13 @@ def get_socket_client_af_inet(socket_server_ip, socket_server_port, login, passw
 
 def send_message(conn):
     print("Ecriver votre reponse:")
-    reponse = input()
-    conn.send(reponse.encode('utf-8'))
+    response = input()
+    print('MESSAGE ENVOYE ',response)
+    conn.send(response.encode('utf-8'))
 
 
 def display_client_message(origin, message):
-    print('Reponse de ', origin, ":", message.decode('utf-8'))
+    print('Reponse de ', origin, ":", message)
 
 
 def handle_message(origin, message, conn):

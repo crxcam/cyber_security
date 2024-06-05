@@ -36,8 +36,10 @@ def monitoring_received_message(socket):
     while (True):
         conn, addr = socket.accept()
         client_ip = addr[0]
-        message = conn.recv(1024)
-        socket_tools.handle_message("server",message,socket)
+        message = conn.recv(1024).decode('utf-8')
+        print('RECEPTION MESSAGE DANS SERVER ',message)
+        if len(message) > 2:
+            socket_tools.handle_message("client",message,conn)
         conn.close()
 
 get_socket_server()
