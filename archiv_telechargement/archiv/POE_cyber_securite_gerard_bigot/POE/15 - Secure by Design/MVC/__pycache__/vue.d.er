@@ -1,0 +1,4 @@
+##[pylyzer] failed /users/gerard/documents/formations/m2i/poe développeur cyber sécurité/python/mvc/vue.py 1712314240 370
+.display_task_list: (tasks: Iterable(Never)) -> NoneType
+.get_new_task: () -> Str
+.show_main_menu: () -> Str

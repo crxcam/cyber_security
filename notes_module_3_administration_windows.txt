@@ -1,0 +1,102 @@
+wifi
+nom:EUROBUROS
+mp: EUR@BUR@S2009
+
+CODE SESSION FORMATION : SE24-174139
+
+Formation windows 
+
+Reseaux
+
+Clase de reseau 
+A :  3 octes = 16000000 hotes
+B : 16 000 reseau et  65000 hotes
+C : 254 machines petite reseau (0 reserver a id reseau et 255 reserver a broadcast)
+D : multicast (envoyer les donne au participat uniquement ,il s'agis une optimisation pour ne pas envoyer a chaque machine le meme packet)
+E : reserver aux organismes internet
+
+norme CIDR => adapter les classes reseaux (definir la limit des hotes )
+les masque de reseau 
+masque reseau A :  255.0.0.0
+masque reseau B :  255.255.0.0
+masque reseau C :  255.255.255.0
+
+RFC1918 definit les adresse IP V4 privé
+Plages de addresse privée
+classe A 10.x.x.x
+classe A 172.16.x.x
+classe A 192.168.x.x
+NAT  reseau privé => routeru nat => internet @
+
+SERVER DHCP
+Creation d'un etendu (plage addresse + masque)
+Bail : attribuer une addresse ip  a une machine
+Routeur
+DNS
+Exclusion : 
+reservation : adresse mac du hote 
+
+CLIENT DHCP
+
+commande shell pour basculer 
+carte reseau en NAT : New-NetNat LAN-01 -int => tabulation
+carte reseau en NAT : Remove-NetNat LAN-01 -int 
+
+
+CLIENT DNS 
+permet resoudre le nom hote en  adresse IP 
+plusiers methodes : 
+-	cache DNS 
+-	fichier host (DMZ)
+-	NRPT configuration par strategie (direct access, DNS sec)
+-	DNS 
+-	LLMNR  (Miscrosoft)
+
+SERVER DNS
+espace de nom 
+racine = .
+TLD = .com ,.fr primaire
+www.google.fr = secondaire
+
+FAI posede server DNS
+FAI si info pas dans cache alor interroge DNS racine recupere racine (.fr) qui a son tour interroge DNS primaire et a son tour secondaire 
+
+
+
+MACHINE PHYSIQUE
+IP : 172.20.1.131
+passrelle : 172.20.0.1
+
+
+vm reverse-proxy : 
+TYPE NAT
+IP : 172.20.1.200 
+masque 20
+passrelle : 172.20.1.131
+
+vm miscroservices : 
+TYPE NAT
+IP : 172.20.1.201 
+masque 20
+passrelle : 172.20.1.200
+
+vm databases : 
+TYPE NAT
+IP : 172.20.1.202 
+masque 20
+passrelle : 172.20.1.201
+
+(mettre les info dans fichier host )
+
+
+
+
+
+
+
+
+
+ 
+
+
+

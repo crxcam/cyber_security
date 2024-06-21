@@ -1,0 +1,17 @@
+meta {
+  name: dummyjson
+  type: http
+  seq: 3
+}
+
+post {
+  url: https://dummyjson.com/products/add
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "test1"
+  }
+}

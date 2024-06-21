@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des fichiers Markdown</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 40px;
+        }
+        h1 {
+            color: #333;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li a {
+            text-decoration: none;
+            color: darkblue;
+            font-weight: bold;
+        }
+        li a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fichiers Markdown Disponibles</h1>
+    <ul>
+        {% for file in files %}
+            <li><a href="{{ url_for('file_display', path=file) }}">{{ file }}</a></li>
+        {% endfor %}
+    </ul>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Document chargé et prêt!');
+        });
+    </script>
+</body>
+</html>
+
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Liste des fichiers Markdown</title>
+  </head>
+  <body>
+    <h1>Fichiers Markdown</h1>
+    <ul>
+      {% for file in files %}
+      <li><a href="{{ url_for('file_display', path=file) }}">{{ file }}</a></li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

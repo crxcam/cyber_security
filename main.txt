@@ -1,0 +1,34 @@
+import socket
+from netifaces import interfaces, ifaddresses, AF_INET
+import tp_tools
+filename_ip_to_scan = "./ip_address.txt"
+filename_logins_pass = "./login_pswd.txt"
+filename_scipts = "./script.txt"
+search_index_ip_start = 125
+search_index_ip_end = 130
+scan_port = 22
+
+
+def app_start():
+    print("start application")
+    print("STEP 1 => Explore ifacename START ")
+    all_iface_and_ip= tp_tools.get_all_ifaces_with_ip()
+    print("Explore ifacename result :",all_iface_and_ip)
+    print("STEP 1 => Explore ifacename END ")
+    print("STEP 2 => Discovery interface eth1 START")
+    discovery_result = tp_tools.discovery_network(all_iface_and_ip['eth1'][0],scan_port,search_index_ip_start,search_index_ip_end,filename_ip_to_scan)
+    print("Discovery interface eth1 finish number ip active with port 22 open found:",discovery_result[0])
+    print("STEP 2 => Discovery interface eth1 END result save in file :",filename_ip_to_scan)
+    print("STEP 3 => enerated file login password START")
+    tp_tools.generated_login_pswd_file(filename_logins_pass)
+    print("Generated file login password finish")
+    print("STEP 3 => enerated file login password END  save in file :",filename_logins_pass)
+    print("STEP 4 => Generated script commandes START")
+    cmds= tp_tools.gererated_script_cmds("22")
+    print("STEP 4 => Generated script commandes END")
+    print("STEP 5 => Save script commandes in file START")
+    tp_tools.save_cmds_in_file(cmds,filename_scipts)
+    print("STEP 5 => Save script commandes in file END saved in file : ",filename_scipts)
+
+app_start()
+

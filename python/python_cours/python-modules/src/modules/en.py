@@ -1,0 +1,2 @@
+def salutation():
+    print("Hello")

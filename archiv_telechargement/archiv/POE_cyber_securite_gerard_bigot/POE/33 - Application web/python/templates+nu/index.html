@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Liste des fichiers Markdown</title>
+  </head>
+  <body>
+    <h1>Fichiers Markdown</h1>
+    <ul>
+      {% for file in files %}
+      <li><a href="{{ url_for('file_display', path=file) }}">{{ file }}</a></li>
+      {% endfor %}
+    </ul>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualisation Markdown</title>
+    <style>
+        body {
+            font-family: 'Courier New', monospace;
+            background-color: #fdfdfd;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ccc;
+        }
+        div {
+            background-color: #ffffff;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div>
+        {{ content|safe }}
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Markdown chargé et prêt à être affiché!');
+        });
+    </script>
+</body>
+</html>
+
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Affichage Markdown</title>
+  </head>
+  <body>
+    <div>{{ content|safe }}</div>
+  </body>
+</html>

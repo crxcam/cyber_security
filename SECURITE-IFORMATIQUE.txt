@@ -1,0 +1,44 @@
+
+Phase D'attack
+
+reinsegnet sur cible example Enterprise
+ 
+recherche information passive 
+(on recherche tout les information publique sur cible )
+information sur le employer 
+esc ce que cible recrute de personnels avec quel competences...
+tout le s information utiles
+
+recherche information active
+scanner la cible avec les differentes outils pour obtenir un footprint
+analyser le porte ouvertes et le service associer 
+anlanyser les exploit qui existe pour ce services 
+charger les exploit avec payload et executer 
+
+
+
+
+  kali  192.168.85.129
+  
+  meta  192.168.85.128
+
+
+def get_getways():
+	gateway_dict= {}
+	gws = netifaces.gateways()
+	inter = netifaces.interfaces()
+	addres = netifaces.ifaddresses('eth1')
+	#print("gateways ",gws)
+	#print("inter ",inter)
+	print("addres ",addres)
+	for gw in gws:
+	    try:
+	    	print('gw',gw)
+	    	gateway_iface= gws[gw][netifaces.AF.INET]
+	    	print('gateway_iface',gateway_iface)
+	    	gateway_ip ,iface = gateway_iface[0]
+	    	gw_list [gateway_ip,iface]
+	    	gateways_dict[gw] = gw_list
+	    except:
+	        pass
+	return gateway_dict

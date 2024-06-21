@@ -1,0 +1,3 @@
+cmd : en tanq que admin
+
+   SLMGR /REARM

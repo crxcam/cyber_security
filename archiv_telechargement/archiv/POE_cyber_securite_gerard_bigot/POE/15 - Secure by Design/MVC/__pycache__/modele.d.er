@@ -1,0 +1,7 @@
+##[pylyzer] failed /users/gerard/documents/formations/m2i/poe développeur cyber sécurité/python/mvc/modele.py 1712314194 192
+.TaskModel: ClassType
+.TaskModel.tasks: Never
+.TaskModel.__call__: (tasks: Obj) -> .TaskModel
+.TaskModel.add_task: (self: .TaskModel, task: Obj) -> Never
+.TaskModel.get_tasks: (self: .TaskModel) -> Never
+

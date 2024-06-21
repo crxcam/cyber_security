@@ -1,0 +1,21 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    margin: 40px;
+}
+h1 {
+    color: #333;
+}
+ul {
+    list-style: none;
+    padding: 0;
+}
+li a {
+    text-decoration: none;
+    color: darkblue;
+    font-weight: bold;
+}
+li a:hover {
+    text-decoration: underline;
+}
+
